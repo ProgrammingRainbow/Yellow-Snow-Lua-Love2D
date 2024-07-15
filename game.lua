@@ -3,7 +3,7 @@ local Flake = require("flake")
 
 local Game = {
 	_is_playing = true,
-	_music_paused = true,
+	_music_paused = false,
 	_score = 0,
 }
 
