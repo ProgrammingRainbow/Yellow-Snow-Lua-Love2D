@@ -1,4 +1,4 @@
-![Screenshot](images/screenshot.png)
+![Screenshot](screenshot.png)
 
 # Don't Eat the Yellow Snow! (Lua - Love2D)
 Earn points by collecting all the tasty white snow flakes that fall. But watch out for the yellow snow.
