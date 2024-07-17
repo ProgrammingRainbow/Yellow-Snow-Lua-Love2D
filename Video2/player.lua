@@ -1,10 +1,9 @@
+local PLAYER_Y = 378
 local PLAYER_SPEED = 300
 local LEFT_OFFSET = 47
 local RIGHT_OFFSET = 47
-local PLAYER_Y = 378
 
 local Player = {
-	_y = PLAYER_Y,
 	_is_right = true,
 }
 
@@ -12,7 +11,7 @@ function Player:new(image)
 	local newPlayer = {}
 	newPlayer._image = image
 	newPlayer._width, newPlayer._height = image:getDimensions()
-	self._x = (love.graphics.getWidth() - newPlayer._width) / 2
+	newPlayer._x = (love.graphics.getWidth() - newPlayer._width) / 2
 	setmetatable(newPlayer, { __index = self })
 	return newPlayer
 end
@@ -44,9 +43,9 @@ end
 
 function Player:draw()
 	if self._is_right then
-		love.graphics.draw(self._image, self._x, self._y, 0, 1, 1)
+		love.graphics.draw(self._image, self._x, PLAYER_Y, 0, 1, 1)
 	else
-		love.graphics.draw(self._image, self._x + self._width, self._y, 0, -1, 1)
+		love.graphics.draw(self._image, self._x + self._width, PLAYER_Y, 0, -1, 1)
 	end
 end
 

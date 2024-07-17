@@ -18,7 +18,7 @@ function Flake:reset(full)
 	else
 		self._y = -self._height - math.random(0, love.graphics.getHeight())
 	end
-	self._x = math.random(0, (love.graphics.getWidth() - self._width))
+	self._x = math.random(0, love.graphics.getWidth() - self._width)
 end
 
 function Flake:bottom()

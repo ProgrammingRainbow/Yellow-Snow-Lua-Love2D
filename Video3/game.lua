@@ -4,13 +4,15 @@ local Flake = require("flake")
 local Game = {}
 
 function Game:load()
+	math.randomseed(os.time())
+
 	-- Load Game Graphics.
 	self.backgroundImage = love.graphics.newImage("images/background.png")
 	self.playerImage = love.graphics.newImage("images/player.png")
 	self.whiteImage = love.graphics.newImage("images/white.png")
 	self.yellowImage = love.graphics.newImage("images/yellow.png")
 
-	-- Create Player objects.
+	-- Create Player object.
 	self.player = Player:new(self.playerImage)
 
 	-- Generate list of flakes.

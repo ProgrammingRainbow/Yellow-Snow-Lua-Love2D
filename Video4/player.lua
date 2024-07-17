@@ -1,11 +1,10 @@
+local PLAYER_Y = 378
 local PLAYER_SPEED = 300
 local LEFT_OFFSET = 47
 local RIGHT_OFFSET = 47
 local TOP_OFFSET = 12
-local PLAYER_Y = 378
 
 local Player = {
-	_y = PLAYER_Y,
 	_is_right = true,
 }
 
@@ -26,8 +25,8 @@ function Player:right()
 	return self._x + self._width - RIGHT_OFFSET
 end
 
-function Player:top()
-	return self._y + TOP_OFFSET
+function Player.top()
+	return PLAYER_Y + TOP_OFFSET
 end
 
 function Player:update(dt)
@@ -49,9 +48,9 @@ end
 
 function Player:draw()
 	if self._is_right then
-		love.graphics.draw(self._image, self._x, self._y, 0, 1, 1)
+		love.graphics.draw(self._image, self._x, PLAYER_Y, 0, 1, 1)
 	else
-		love.graphics.draw(self._image, self._x + self._width, self._y, 0, -1, 1)
+		love.graphics.draw(self._image, self._x + self._width, PLAYER_Y, 0, -1, 1)
 	end
 end
 

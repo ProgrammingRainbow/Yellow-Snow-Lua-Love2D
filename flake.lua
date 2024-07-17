@@ -33,7 +33,7 @@ function Flake:right()
 	return self._x + self._width
 end
 
-function Flake:is_white()
+function Flake:isWhite()
 	return self._is_white
 end
 

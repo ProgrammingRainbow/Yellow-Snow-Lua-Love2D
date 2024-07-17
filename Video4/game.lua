@@ -6,6 +6,8 @@ local Game = {
 }
 
 function Game:load()
+	math.randomseed(os.time())
+
 	-- Load Game Graphics.
 	self.backgroundImage = love.graphics.newImage("images/background.png")
 	self.playerImage = love.graphics.newImage("images/player.png")
@@ -29,7 +31,7 @@ function Game:load()
 	end
 end
 
-function Game:is_playing()
+function Game:isPlaying()
 	return self._is_playing
 end
 
@@ -42,11 +44,11 @@ end
 
 function Game:checkCollision(flake)
 	if
-		flake:bottom() > self.player:top()
+		flake:bottom() > self.player.top()
 		and flake:right() > self.player:left()
 		and flake:left() < self.player:right()
 	then
-		if flake:is_white() then
+		if flake:isWhite() then
 			flake:reset(false)
 		else
 			self._is_playing = false
@@ -55,7 +57,7 @@ function Game:checkCollision(flake)
 end
 
 function Game:update(dt)
-	if self:is_playing() then
+	if self:isPlaying() then
 		self.player:update(dt)
 		for _, flake in ipairs(self.flakes) do
 			flake:update(dt)

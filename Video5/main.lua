@@ -12,12 +12,12 @@ function love.draw()
 	Game:draw()
 end
 
-function love.keypressed(k)
-	if k == "escape" then
+function love.keypressed(key)
+	if key == "escape" then
 		love.event.quit()
-	elseif k == "space" and not Game:is_playing() then
+	elseif key == "space" and not Game:isPlaying() then
 		Game:reset()
-	elseif k == "m" then
-		Game:pause_music()
+	elseif key == "m" then
+		Game:pauseMusic()
 	end
 end
