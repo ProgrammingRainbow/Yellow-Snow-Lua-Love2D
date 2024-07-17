@@ -12,7 +12,7 @@ function Player:new(image)
 	local newPlayer = {}
 	newPlayer._image = image
 	newPlayer._width, newPlayer._height = image:getDimensions()
-	self._x = (love.graphics.getWidth() - newPlayer._width) / 2
+	newPlayer._x = (love.graphics.getWidth() - newPlayer._width) / 2
 	setmetatable(newPlayer, { __index = self })
 	return newPlayer
 end

@@ -3,6 +3,7 @@ local Flake = require("flake")
 
 local Game = {
 	_is_playing = true,
+	_score = 0,
 }
 
 function Game:load()
@@ -14,7 +15,11 @@ function Game:load()
 	self.whiteImage = love.graphics.newImage("images/white.png")
 	self.yellowImage = love.graphics.newImage("images/yellow.png")
 
-	-- Create Player objects.
+	-- Load and set font.
+	self.font = love.graphics.newFont("fonts/freesansbold.ttf", 24)
+	love.graphics.setFont(self.font)
+
+	-- Create Player object.
 	self.player = Player:new(self.playerImage)
 
 	-- Generate list of flakes.
@@ -36,6 +41,7 @@ function Game:isPlaying()
 end
 
 function Game:reset()
+	self._score = 0
 	for _, flake in ipairs(self.flakes) do
 		flake:reset(true)
 	end
@@ -50,6 +56,7 @@ function Game:checkCollision(flake)
 	then
 		if flake:isWhite() then
 			flake:reset(false)
+			self._score = self._score + 1
 		else
 			self._is_playing = false
 		end
@@ -72,6 +79,7 @@ function Game:draw()
 	for _, flake in ipairs(self.flakes) do
 		flake:draw()
 	end
+	love.graphics.print("Score: " .. self._score, 10, 10)
 end
 
 return Game
